@@ -16,6 +16,8 @@ public class GetCircumFerence {
 		double circumFerence = 2 * Math.PI * radius;
 		System.out.println("The circumference is: "+ circumFerence);
 		
+		sc.close();
+		
 	}
 
 }
