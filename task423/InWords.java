@@ -1,6 +1,5 @@
 package net.ukr.p454.task423;
 
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -17,11 +16,13 @@ public class InWords {
 		String output = "";
 		sc.close();
 
-		String[] simpleNumbres = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-				"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
-				"nineteen" };
+		String[] simpleNumbres = { "zero", "one", "two", "three", "four",
+				"five", "six", "seven", "eight", "nine", "ten", "eleven",
+				"twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+				"seventeen", "eighteen", "nineteen" };
 
-		String[] tyNumbres = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+		String[] tyNumbres = { "", "", "twenty", "thirty", "forty", "fifty",
+				"sixty", "seventy", "eighty", "ninety" };
 
 		String[] arrayNumbers = new String[100];
 
@@ -32,7 +33,8 @@ public class InWords {
 				if (i % 10 == 0) {
 					arrayNumbers[i] = tyNumbres[i / 10];
 				} else {
-					arrayNumbers[i] = tyNumbres[i / 10] + " " + simpleNumbres[i % 10];
+					arrayNumbers[i] = tyNumbres[i / 10] + " "
+							+ simpleNumbres[i % 10];
 				}
 			}
 		}
@@ -44,28 +46,35 @@ public class InWords {
 				output = arrayNumbers[toNumber / 100000000] + " hundred and ";
 			}
 
-			output = output + arrayNumbers[toNumber / 1000000 % 100] + " million ";
+			output = output + arrayNumbers[toNumber / 1000000 % 100]
+					+ " million ";
 		}
 
 		if (toNumber / 1000 > 0) {
 			if (toNumber / 1000 % 1000 / 100 >= 1) {
-				output = output + arrayNumbers[toNumber / 1000 % 1000 / 100] + " hundred and ";
+				output = output + arrayNumbers[toNumber / 1000 % 1000 / 100]
+						+ " hundred and ";
 			}
 
-			output = output + arrayNumbers[toNumber / 1000 % 1000 % 100] + " thousand ";
+			output = output + arrayNumbers[toNumber / 1000 % 1000 % 100]
+					+ " thousand ";
 		}
 
-		if (toNumber%1000/100 >= 1) {
+		if (toNumber % 1000 / 100 >= 1) {
 
-			output = output + arrayNumbers[toNumber % 1000 / 100] + " hundred and ";
+			output = output + arrayNumbers[toNumber % 1000 / 100]
+					+ " hundred and ";
 		}
 		output = output + arrayNumbers[toNumber % 100] + " dollars ";
-		
-		toNumber = Integer.parseInt(parts[1]);
+
+		if (parts[1].length() == 1) {
+			toNumber = Integer.parseInt(parts[1] + "0");
+		} else {
+			toNumber = Integer.parseInt(parts[1]);
+		}
 		output = output + arrayNumbers[toNumber] + " cents";
 		System.out.println(output);
-		
-		
+
 	}
 
 }
