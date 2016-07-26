@@ -1,6 +1,6 @@
 package net.ukr.p454.task423;
 
-import java.nio.charset.spi.CharsetProvider;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -37,7 +37,6 @@ public class InWords {
 			}
 		}
 
-		char[] aInputNumbers = parts[0].toCharArray();
 		int toNumber = Integer.parseInt(parts[0]);
 
 		if (toNumber / 1000000 > 0) {
@@ -60,8 +59,13 @@ public class InWords {
 
 			output = output + arrayNumbers[toNumber % 1000 / 100] + " hundred and ";
 		}
-		output = output + arrayNumbers[toNumber % 100];
+		output = output + arrayNumbers[toNumber % 100] + " dollars ";
+		
+		toNumber = Integer.parseInt(parts[1]);
+		output = output + arrayNumbers[toNumber] + " cents";
 		System.out.println(output);
+		
+		
 	}
 
 }
