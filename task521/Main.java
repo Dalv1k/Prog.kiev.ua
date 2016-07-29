@@ -40,8 +40,8 @@ public class Main {
 
 		for (int i = 2; i < array.length; i++) {
 
-			if (subtraction(array[i], array[i - 1]) == subtraction(array[i - 1], array[i - 2])) {
-				result = array[i] + subtraction(array[i], array[i - 1]);
+			if (array[i]-array[i - 1] == array[i - 1]- array[i - 2]) {
+				result = array[i] + (array[i]- array[i - 1]);
 			} else {
 				result = -1;
 				break;
@@ -54,8 +54,8 @@ public class Main {
 		int result = -1;
 
 		for (int i = 2; i < array.length; i++) {
-			if (division(array[i], array[i - 1]) == division(array[i - 1], array[i - 2])) {
-				result = array[i] * division(array[i], array[i - 1]);
+			if ((array[i]/array[i - 1]) == (array[i - 1]/ array[i - 2])) {
+				result = array[i] * (array[i]/ array[i - 1]);
 			} else {
 				result = -1;
 				break;
@@ -90,13 +90,7 @@ public class Main {
 		return result;
 	}
 
-	static int subtraction(int a, int b) {
-		return a - b;
-	}
 
-	static int division(int a, int b) {
-		return a / b;
-	}
 
 	static void fillArray(int[] array, int length) {
 		Scanner sc = new Scanner(System.in);
