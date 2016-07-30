@@ -1,4 +1,4 @@
-package net.ukr.p454.logic;
+
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -54,10 +54,16 @@ public class Main {
 		int result = -1;
 
 		for (int i = 2; i < array.length; i++) {
-			if ((array[i]/array[i - 1]) == (array[i - 1]/ array[i - 2])) {
+
+			if ((array[i]/array[i - 1]) == (array[i - 1]/ array[i - 2])&&
+					(array[i]%array[i - 1]) == (array[i - 1]% array[i - 2])) {
+				
 				result = array[i] * (array[i]/ array[i - 1]);
+
 			} else {
+			
 				result = -1;
+			
 				break;
 			}
 		}
