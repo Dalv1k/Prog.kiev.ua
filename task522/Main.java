@@ -9,26 +9,32 @@ public class Main {
 	}
 
 	static void getPolindrom (int [] array) {
-		int maxPolindrom = 0; 
+		int maxPolindrom = 0;
+		int a = 0;
+		int b = 0;
 
 		for (int i = 100; i <= 999 ; i++ ) {
 			for (int j = 100; j <= 999; j++ ) {
 
 				setArray(array, i * j);
 
-				if (checkPolindrom(array)){
-					
-					maxPolindrom = (i*j > maxPolindrom) ? i * j : maxPolindrom;
-						
+				if (checkPolindrom(array)) {
+					if (i * j > maxPolindrom) {
+						maxPolindrom = i * j;
+
+						a = i;
+						b = j;
+					}
 				}
 			}
 		}
 
-		System.out.println("maxPolindrom:" + maxPolindrom);
+		System.out.println(a + " * " + b + " is maxPolindrom:" + maxPolindrom);
 	}
 
 	static boolean checkPolindrom(int [] array) {
 		int counter = 0;
+
 		boolean check = false;
 		if (array[0] != 0) {
 
