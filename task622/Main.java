@@ -1,5 +1,6 @@
 package net.ukr.p454.task622;
 
+
 import java.util.Scanner;
 
 public class Main {
@@ -13,43 +14,27 @@ public class Main {
 
 		System.out.print("Input second number:");
 		int number2 = scanner.nextInt();
+		
+		scanner.close();
+		
+		getDistanceByHaming(number1, number2);
+		
+	};
+	
+	static void getDistanceByHaming (int number1, int number2){
+		String  number = Integer.toBinaryString( number1^number2);
 
-		getDistByHaming(getBinaryNumber(number1), getBinaryNumber(number2));
-
-	}
-
-	static String getBinaryNumber(int number) {
-		StringBuilder sBuilder = new StringBuilder();
-		String str = "";
-		int resultDivision = number;
-
-		while (resultDivision != 0) {
-			if (resultDivision % 2 == 1) {
-				sBuilder.insert(0, 1);
-			} else {
-				sBuilder.insert(0, 0);
-			}
-
-			resultDivision = resultDivision / 2;
-		}
-		str = str.format("%8s", sBuilder.toString());
-		str = str.replace(' ', '0');
-		return str;
-
-	}
-
-	static void getDistByHaming(String number1, String number2) {
-		char[] arrayNum1 = number1.toCharArray();
-		char[] arrayNum2 = number2.toCharArray();
-
-		int distance = 0;
-		for (int i = 0; i < arrayNum1.length; i++) {
-			if (arrayNum1[i] != arrayNum2[i]) {
-				distance++;
+		char[] array = number.toCharArray();
+		
+		int distance  = 0;
+		
+		for (char c : array) {
+			if (c == '1'){
+				distance ++;
 			}
 		}
-
-		System.out.println("Distance of Haming is: " + distance);
+		
+		System.out.println("Distance by Haming:" + distance);
 	}
 
 }
