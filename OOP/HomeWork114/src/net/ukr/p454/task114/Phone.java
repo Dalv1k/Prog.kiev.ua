@@ -39,9 +39,11 @@ public class Phone {
 	
 	public void makeCall(BaseStation baseStation){
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Input phone number:");
+		System.out.print("Who are you calling?" + "\n"+ "Input phone number:");
 		baseStation.commutation(this.extNumber.getExtNumber(), scanner.nextInt());
 	}
 	
-	
+	public void putPhoneDown(BaseStation baseStation){
+		baseStation.disconnect(this.getExtNumber().getExtNumber());
+	}
 }

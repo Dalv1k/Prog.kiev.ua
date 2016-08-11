@@ -48,15 +48,17 @@ class BaseStation {
 
 	String getStats() {
 		StringBuffer stringBuffer = new StringBuffer();
+		stringBuffer.append("............................STATS............................\n");		
 		stringBuffer.append(
 				"Amount busy lines:" + calcBusyLines() + "; free lines:" + (amountInternalConnect - calcBusyLines()));
+		stringBuffer.append("\n.............................................................\n");
 		return stringBuffer.toString();
 	}
 
 	private int calcBusyLines() {
 		int busyLines = 0;
 		for (String s : currentConnects) {
-			if (!s.isEmpty()) {
+			if (s != null) {
 				busyLines++;
 			}
 		}
@@ -87,7 +89,7 @@ class BaseStation {
 
 		if (minPosition > 0) {
 			for (int i = 0; i < numberPlan.length; i++) {
-				// If element of array wasn't found than metod returns negative
+				// If element of array wasn't found than method returns negative
 				// number: length of array - 1
 				if (Arrays.binarySearch(fixedNumbers, numberPlan[i]) == (0 - numberPlan.length - 1)) {
 					nextNumber = numberPlan[i];
@@ -117,12 +119,34 @@ class BaseStation {
 	}
 
 	public void commutation(int callerNumber, int dialNumber) {
+		System.out.println(".........Try to connect " + callerNumber + " with " +dialNumber + "..........");
+		if (checkNumber(dialNumber) && !(checkBusyNumber(dialNumber))) {
+			registerConnect(callerNumber, dialNumber);
+		}
 
-		/*
-		 * if (checkNumber(dialNumber)&&(checkBusyNumber(dialNumber))) {
-		 * System.out.println("din"); }
-		 */
-		checkBusyNumber(dialNumber);
+	}
+
+	private void registerConnect(int callerNumber, int dialNumber) {
+		for (int i = 0; i < currentConnects.length; i++) {
+			if (currentConnects[i] == null) {
+				currentConnects[i] = callerNumber + ":" + dialNumber;
+				System.out.println("...............Connected!" + callerNumber + " -> " + dialNumber + "..............");
+				break;
+			}
+			if (i == currentConnects.length - 1) {
+				System.err.println("Sorry! All lines are busy! Try later!");
+			}
+		}
+	}
+
+	public void disconnect(int number) {
+		for (int i = 0; i < currentConnects.length; i++) {
+			if (currentConnects[i] != null && currentConnects[i].contains(Integer.toString(number))) {
+				System.out.println(".............Conversation: " + currentConnects[i] + " is over!...............");
+				currentConnects[i] = null;
+				break;
+			}
+		}
 	}
 
 	private boolean checkRegisterNumber(int number) {
