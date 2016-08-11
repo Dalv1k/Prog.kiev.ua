@@ -118,9 +118,10 @@ class BaseStation {
 
 	public void commutation(int callerNumber, int dialNumber) {
 
-	/*	if (checkNumber(dialNumber)&&(checkBusyNumber(dialNumber))) {
-			System.out.println("din");
-		}*/
+		/*
+		 * if (checkNumber(dialNumber)&&(checkBusyNumber(dialNumber))) {
+		 * System.out.println("din"); }
+		 */
 		checkBusyNumber(dialNumber);
 	}
 
@@ -130,7 +131,7 @@ class BaseStation {
 			if (registeredNumbers[i] == number) {
 				check = true;
 				break;
-			} 
+			}
 		}
 		return check;
 	}
@@ -159,16 +160,17 @@ class BaseStation {
 
 		return check;
 	}
-	
-	private boolean checkBusyNumber(int number){
-		currentConnects[0]= "100:102";
-		String string;
-		boolean check = false; 
-		for (int i = 0; i <1; i++){
-			string = currentConnects[i];
-			System.out.println(i);
-			System.out.println(string.indexOf(string,0));
 
+	private boolean checkBusyNumber(int number) {
+
+		boolean check = false;
+
+		for (int i = 0; i < currentConnects.length; i++) {
+			if (currentConnects[i] != null && currentConnects[i].contains(Integer.toString(number))) {
+				check = true;
+				System.err.println("Sorry, abonent busy!");
+				break;
+			}
 
 		}
 
