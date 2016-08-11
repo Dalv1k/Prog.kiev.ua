@@ -14,7 +14,7 @@ class BaseStation {
 	// transcript of a busy line. Example 101 with 102
 	private String[] currentConnects;
 	// registered numbers
-	private int[] registeredNumbers = new int[numberPlan.length];
+	private int[] registeredNumbers = new int[1];
 
 	Scanner scanner = new Scanner(System.in);
 
@@ -92,6 +92,7 @@ class BaseStation {
 				// If element of array wasn't found than method returns negative
 				// number: length of array - 1
 				if (Arrays.binarySearch(fixedNumbers, numberPlan[i]) == (0 - numberPlan.length - 1)) {
+					
 					nextNumber = numberPlan[i];
 					fixedNumbers[minPosition] = numberPlan[i];
 					break;
@@ -108,6 +109,7 @@ class BaseStation {
 		if (!checkRegisterNumber(extNumber)) {
 			for (int i = 0; i < registeredNumbers.length; i++) {
 				if (registeredNumbers[i] == 0) {
+					registeredNumbers = increaseArray(registeredNumbers);
 					registeredNumbers[i] = extNumber;
 					System.out.println("Numer " + extNumber + " was registered in system");
 					break;
@@ -148,7 +150,12 @@ class BaseStation {
 			}
 		}
 	}
-
+	public int[] increaseArray(int[] array){
+		int[] newArray = new int[array.length +1];
+		System.arraycopy(array, 0, newArray, 0, array.length);
+		return newArray;
+	}
+	
 	private boolean checkRegisterNumber(int number) {
 		boolean check = false;
 		for (int i = 0; i < registeredNumbers.length; i++) {
