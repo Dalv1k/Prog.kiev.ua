@@ -22,7 +22,7 @@ public class Main {
 				
 		System.out.println(board.toString());
 		
-		board.remShape(circle);
+		board.remShape(quadrangle);
 		System.out.println(board.toString());
 	}
 

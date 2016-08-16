@@ -28,6 +28,15 @@ public class Board {
 		}
 	}
 	
+	public double getAllArea () {
+		double area = 0;
+		for (int i = 0; i < shapes.length; i++) {
+			if (shapes[i] != null) {
+				area = area + shapes[i].getArea();
+			}
+		}
+		return area;
+	}
 	
 	@Override
 	public String toString() {
@@ -40,6 +49,7 @@ public class Board {
 			}
 			stringBuffer.append(System.lineSeparator());
 		}
+		stringBuffer.append("All area:" + getAllArea());
 		return stringBuffer.toString();
 	}
 	
