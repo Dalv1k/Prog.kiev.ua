@@ -96,7 +96,7 @@ public class Group {
 		return position;
 	}
 
-	public void sortArray(){
+	private void sortArray(){
 		String[] strArray = new String[students.length];
 		for (int i = 0; i < strArray.length; i++) {
 			strArray[i] = students[i].getFullName(); 
