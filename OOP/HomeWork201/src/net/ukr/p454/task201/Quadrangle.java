@@ -50,7 +50,19 @@ public class Quadrangle extends Shape{
 
 	@Override
 	public String toString() {
-		return "Quadrangle [a=" + a.toString() + ", b=" + b.toString() + ", c=" + c.toString() + ", d=" + d.toString() + "]";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(type);
+		stringBuilder.append(" with points:");
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("a" + a.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("b" + b.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("c" + c.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("d" + d.toString());
+		return stringBuilder.toString();
+		
 	}
 
 	public Point getA() {

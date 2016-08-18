@@ -41,7 +41,17 @@ public class Triangle extends Shape {
 
 	@Override
 	public String toString() {
-		return "Triangle [a=" + a.toString() + ", b=" + b.toString() + ", c=" + c.toString() + "]";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(type);
+		stringBuilder.append(" with points:");
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("a" + a.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("b" + b.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("c" + c.toString());
+		
+		return stringBuilder.toString();
 	}
 
 	public Point getA() {

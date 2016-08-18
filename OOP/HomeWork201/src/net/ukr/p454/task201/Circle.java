@@ -32,7 +32,15 @@ public class Circle extends Shape{
 
 	@Override
 	public String toString() {
-		return "Circle [centre = " + a.toString() + ", radius=" + a.getLengthSide(r) + "]";
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(type);
+		stringBuilder.append(" with centre:");
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("a" + a.toString());
+		stringBuilder.append(System.lineSeparator());
+		stringBuilder.append("Radius = " + r.getLengthSide(a));
+		
+		return stringBuilder.toString();
 	}
 
 	public Point getA() {
