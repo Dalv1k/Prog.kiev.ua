@@ -76,7 +76,7 @@ public class Board {
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append("What can you see on board:");
 		stringBuffer.append(System.lineSeparator());
-		
+
 		for (int i = 0; i < shapes.length; i++) {
 			if (shapes[i] == null) {
 				stringBuffer.append("Free");
@@ -84,7 +84,7 @@ public class Board {
 				stringBuffer.append(shapes[i].toString());
 			}
 			stringBuffer.append(System.lineSeparator());
-					
+
 		}
 		stringBuffer.append("All area:" + getAllArea());
 		return stringBuffer.toString();
