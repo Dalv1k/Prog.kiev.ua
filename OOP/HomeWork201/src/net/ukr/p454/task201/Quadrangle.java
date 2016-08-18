@@ -6,6 +6,8 @@ public class Quadrangle extends Shape{
 	private Point b;
 	private Point c;
 	private Point d;
+	private String type;
+	
 	
 	public Quadrangle(Point a, Point b, Point c, Point d) {
 		super();
@@ -13,25 +15,20 @@ public class Quadrangle extends Shape{
 		this.b = b;
 		this.c = c;
 		this.d = d;
+		type = "Quadrangle";
 	}
 
 	public Quadrangle() {
 		super();
 	}
 
-	private double getLengthSide(Point a, Point b) {
-		double length;
-		length = Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));
-		return length;
-	}
-	
 	
 	@Override
 	public double getPerimeter() {
-		double ab = getLengthSide(a, b);
-		double bd = getLengthSide(b, d);
-		double cd = getLengthSide(c, d);
-		double ac = getLengthSide(a, c); 
+		double ab = a.getLengthSide(b);
+		double bd = b.getLengthSide(d);
+		double cd = c.getLengthSide(d);
+		double ac = a.getLengthSide(c); 
 		
 		double perimeter = ab + bd + cd + ac; 
 		
@@ -40,10 +37,10 @@ public class Quadrangle extends Shape{
 
 	@Override
 	public double getArea() {
-		double ab = getLengthSide(a, b);
-		double bd = getLengthSide(b, d);
-		double cd = getLengthSide(c, d);
-		double ac = getLengthSide(a, c); 
+		double ab = a.getLengthSide(b);
+		double bd = b.getLengthSide(d);
+		double cd = c.getLengthSide(d);
+		double ac = a.getLengthSide(c); 
 		
 		double semiPerimeter = getPerimeter()/2;
 		double area = Math.sqrt((semiPerimeter - ab)*(semiPerimeter - bd)*(semiPerimeter - cd)*(semiPerimeter - ac));
@@ -87,6 +84,9 @@ public class Quadrangle extends Shape{
 	public void setD(Point d) {
 		this.d = d;
 	}
-	
+
+	public String getType() {
+		return type;
+	}
 	
 }

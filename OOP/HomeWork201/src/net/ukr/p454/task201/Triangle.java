@@ -4,12 +4,15 @@ public class Triangle extends Shape {
 	private Point a;
 	private Point b;
 	private Point c;
+	private String type;
+	
 
 	public Triangle(Point a, Point b, Point c) {
 		super();
 		this.a = a;
 		this.b = b;
 		this.c = c;
+		type = "Triangle";
 	}
 
 	public Triangle() {
@@ -18,28 +21,22 @@ public class Triangle extends Shape {
 
 	@Override
 	public double getPerimeter() {
-		double ab = getLengthSide(a, b);
-		double ac = getLengthSide(a, c);
-		double bc = getLengthSide(b, c);
+		double ab = a.getLengthSide(b);
+		double ac = a.getLengthSide(c);
+		double bc = b.getLengthSide(c);
 		return ab + ac + bc;
 	}
 
 	@Override
 	public double getArea() {
 
-		double ab = getLengthSide(a, b);
-		double ac = getLengthSide(a, c);
-		double bc = getLengthSide(b, c);
+		double ab = a.getLengthSide(b);
+		double ac = a.getLengthSide(c);
+		double bc = b.getLengthSide(c);
 
 		double semiPerimeter = getPerimeter() / 2;
 		double area = Math.sqrt(semiPerimeter * (semiPerimeter - ab) * (semiPerimeter - ac) * (semiPerimeter - bc));
 		return area;
-	}
-
-	private double getLengthSide(Point a, Point b) {
-		double length;
-		length = Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2));
-		return length;
 	}
 
 	@Override
@@ -70,5 +67,11 @@ public class Triangle extends Shape {
 	public void setC(Point c) {
 		this.c = c;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	
 
 }

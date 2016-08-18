@@ -1,34 +1,67 @@
 package net.ukr.p454.task201;
 
 public class Board {
-	
-	Shape[] shapes = new Shape[4];
-	
-	public void addShape(Shape shape) {
-		for (int i = 0; i < shapes.length; i++) {
-			if (shapes[i] != null) {
-				if (shapes[i].getClass() == shape.getClass()){
-					System.out.println("This figure exists on board");
-					break;
+
+	private Shape[] shapes = new Shape[4];
+
+	public void addShape(Shape shape, int position) {
+
+		position--;
+		int freePositions = 0;
+		try {
+			if (shapes[position] == null) {
+				shapes[position] = shape;
+				System.out.println("You drawed the figure " + shape.getType());
+			} else {
+				System.err.println("You can't draw the figure on this place. On this place was drawed "
+						+ shapes[position].getType());
+
+				StringBuilder stringBuilder = new StringBuilder();
+
+				for (int i = 0; i < shapes.length; i++) {
+					if (shapes[i] == null) {
+						stringBuilder.append((i + 1) + " ");
+						freePositions++;
+					}
 				}
-			}else {
-				shapes[i] = shape;
-				break;
+
+				if (freePositions > 0) {
+					System.out.println("You can draw on next places:" + stringBuilder.toString());
+				} else {
+					System.out.println("You have not free places");
+				}
 			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Wrong position on board. Try from 1 to 4");
 		}
+
 	}
 
-	public void remShape(Shape shape)  {
+	public void remShape(Shape shape) {
 		for (int i = 0; i < shapes.length; i++) {
-			if(shapes[i].getClass() == shape.getClass()){
+			if (shapes[i] != null && shapes[i].getClass() == shape.getClass()) {
 				shapes[i] = null;
 				System.out.println("Figure was removed");
 				break;
 			}
 		}
 	}
-	
-	public double getAllArea () {
+
+	public void erasePlase(int position) {
+		position--;
+		try {
+			if (shapes[position] != null) {
+				shapes[position] = null;
+				System.out.println("You erased this part of board");
+			} else {
+				System.out.println("Needless to erase. This place is free.");
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Wrong position on board. Try from 1 to 4");
+		}
+	}
+
+	public double getAllArea() {
 		double area = 0;
 		for (int i = 0; i < shapes.length; i++) {
 			if (shapes[i] != null) {
@@ -37,14 +70,14 @@ public class Board {
 		}
 		return area;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuffer stringBuffer = new StringBuffer();
 		for (int i = 0; i < shapes.length; i++) {
 			if (shapes[i] == null) {
 				stringBuffer.append("Free");
-			}else{
+			} else {
 				stringBuffer.append(shapes[i].toString());
 			}
 			stringBuffer.append(System.lineSeparator());
@@ -52,6 +85,5 @@ public class Board {
 		stringBuffer.append("All area:" + getAllArea());
 		return stringBuffer.toString();
 	}
-	
-	
+
 }
