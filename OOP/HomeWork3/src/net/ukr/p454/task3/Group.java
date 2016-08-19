@@ -1,6 +1,7 @@
 package net.ukr.p454.task3;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Group {
 	private String name;
@@ -40,7 +41,7 @@ public class Group {
 			sortArray();
 
 		} catch (GroupExeption e) {
-			
+
 			e.showMessage("Sorry, this group is full!");
 		}
 
@@ -96,10 +97,17 @@ public class Group {
 		return position;
 	}
 
-	private void sortArray(){	
-		Arrays.sort(students,Student.StudentFullNameComparator);
+	private void sortArray() {
+		Arrays.sort(students, new Comparator<Student>() {
+			@Override
+			public int compare(Student studentOne, Student studentTwo) {
+				String studentNameOne = studentOne.getFullName().toUpperCase();
+				String studentNameTwo = studentTwo.getFullName().toUpperCase();
+				return studentNameOne.compareTo(studentNameTwo);
+			}
+		});
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -131,6 +139,5 @@ public class Group {
 		}
 		return stringBuilder.toString();
 	}
-	
-	
+
 }

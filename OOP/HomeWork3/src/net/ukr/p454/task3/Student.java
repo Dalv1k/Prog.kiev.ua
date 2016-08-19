@@ -1,6 +1,6 @@
 package net.ukr.p454.task3;
 
-import java.util.Comparator;
+
 import java.util.Formatter;
 
 public class Student extends Human {
@@ -86,17 +86,5 @@ public class Student extends Human {
 	public void setGroup(String group) {
 		this.group = group;
 	}
-
-	public static Comparator<Student> StudentFullNameComparator = new Comparator<Student>() {
-
-		public int compare(Student studentOne, Student studentTwo) {
-
-			String studentNameOne = studentOne.getFullName().toUpperCase();
-			String studentNameTwo = studentTwo.getFullName().toUpperCase();
-
-			return studentNameOne.compareTo(studentNameTwo);
-		}
-
-	};
 
 }
