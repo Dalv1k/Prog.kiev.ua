@@ -1,5 +1,6 @@
 package net.ukr.p454.task3;
 
+import java.util.Comparator;
 import java.util.Formatter;
 
 public class Student extends Human {
@@ -24,7 +25,7 @@ public class Student extends Human {
 
 	}
 
-	public Student(Human human, String faculty,  int studentID, int course) {
+	public Student(Human human, String faculty, int studentID, int course) {
 		super(human.getFullName(), human.getAge(), human.getNationality(), human.getDateOfBirthday(),
 				human.getPlaceOfBirthday());
 		this.faculty = faculty;
@@ -48,7 +49,7 @@ public class Student extends Human {
 		formatter.format("%-18s %d", "StudentID:", studentID);
 		formatter.format(System.lineSeparator());
 		formatter.format("%-18s %d", "Course:", course);
-		formatter.format(System.lineSeparator());		
+		formatter.format(System.lineSeparator());
 		str = formatter.toString();
 		formatter.close();
 		return str;
@@ -85,7 +86,17 @@ public class Student extends Human {
 	public void setGroup(String group) {
 		this.group = group;
 	}
-	
-	
-	
+
+	public static Comparator<Student> StudentFullNameComparator = new Comparator<Student>() {
+
+		public int compare(Student studentOne, Student studentTwo) {
+
+			String studentNameOne = studentOne.getFullName().toUpperCase();
+			String studentNameTwo = studentTwo.getFullName().toUpperCase();
+
+			return studentNameOne.compareTo(studentNameTwo);
+		}
+
+	};
+
 }

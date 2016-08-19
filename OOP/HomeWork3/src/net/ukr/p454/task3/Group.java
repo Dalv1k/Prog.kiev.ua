@@ -96,17 +96,8 @@ public class Group {
 		return position;
 	}
 
-	private void sortArray(){
-		String[] strArray = new String[students.length];
-		for (int i = 0; i < strArray.length; i++) {
-			strArray[i] = students[i].getFullName(); 
-		}
-		Arrays.sort(strArray);
-		Student[] sortStudents = new Student[students.length];
-		for (int i = 0; i < sortStudents.length; i++) {
-			sortStudents[i] = students[checkStudentInGroup(strArray[i])];
-		}
-		students = sortStudents;
+	private void sortArray(){	
+		Arrays.sort(students,Student.StudentFullNameComparator);
 	}
 	
 	public String getName() {
