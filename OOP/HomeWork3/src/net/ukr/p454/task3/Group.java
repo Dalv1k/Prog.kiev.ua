@@ -38,7 +38,6 @@ public class Group {
 				student.setGroup(this.name);
 				System.out.println(student.getFullName() + " enrolled in the group " + this.name);
 			}
-			sortArray();
 
 		} catch (GroupExeption e) {
 
@@ -48,7 +47,9 @@ public class Group {
 	}
 
 	public void exludStudent(String fullname) {
+
 		int position = checkStudentInGroup(fullname);
+
 		if (position != -1) {
 			System.out.println(students[position].getFullName() + " was excluded from group " + this.name);
 			students[position] = null;
@@ -101,6 +102,13 @@ public class Group {
 		Arrays.sort(students, new Comparator<Student>() {
 			@Override
 			public int compare(Student studentOne, Student studentTwo) {
+				if (studentOne == null && studentTwo == null) {
+					return 0;
+				} else if (studentOne == null) {
+					return 1;
+				} else if (studentTwo == null) {
+					return -1;
+				}
 				String studentNameOne = studentOne.getFullName().toUpperCase();
 				String studentNameTwo = studentTwo.getFullName().toUpperCase();
 				return studentNameOne.compareTo(studentNameTwo);
@@ -126,6 +134,7 @@ public class Group {
 
 	@Override
 	public String toString() {
+		sortArray();
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Group Name:" + this.name);
 		stringBuilder.append(System.lineSeparator());
@@ -134,8 +143,13 @@ public class Group {
 		stringBuilder.append("Students:");
 		stringBuilder.append(System.lineSeparator());
 		for (int i = 0; i < students.length; i++) {
-			stringBuilder.append(students[i].getFullName());
-			stringBuilder.append(System.lineSeparator());
+			if (students[i] == null) {
+				stringBuilder.append("The vacant position");
+				stringBuilder.append(System.lineSeparator());
+			} else {
+				stringBuilder.append(students[i].getFullName());
+				stringBuilder.append(System.lineSeparator());
+			}
 		}
 		return stringBuilder.toString();
 	}

@@ -30,11 +30,11 @@ public class Main {
 				1000011, 1);
 
 		Group group = new Group("ДЗ-33", curator);
-		
+
 		group.addStudent(studentIAI);
-		//try the same student
+		// try the same student
 		group.addStudent(studentIAI);
-		
+
 		group.addStudent(studentPAI);
 		group.addStudent(studentBAI);
 		group.addStudent(studentCAI);
@@ -44,22 +44,23 @@ public class Main {
 		group.addStudent(studentNAI);
 		group.addStudent(studentIPI);
 		group.addStudent(studentKAI);
-		
-		//Group is full
-		group.addStudent(studentLAI);
-		
-		//Ivanov shirked all pairs
-		group.exludStudent("иванов петр сергеевич");
-		group.exludStudent("иванов петр иванович");
-		
-		//Add new students 
+
+		// Group is full
 		group.addStudent(studentLAI);
 
-		//search 
+		// Ivanov shirked all pairs
+		group.exludStudent("иванов петр сергеевич");
+		group.exludStudent("иванов петр иванович");
+		group.exludStudent("Манилов Александр Иванович");
+
+		// Add new students
+		// group.addStudent(studentLAI);
+
+		// search
 		group.searchStudent("Краевой Александр Иванович");
-		
-		//try to recover 
-		group.addStudent(studentIPI);
+
+		// try to recover
+		// group.addStudent(studentIPI);
 
 		System.out.println(group.toString());
 	}
