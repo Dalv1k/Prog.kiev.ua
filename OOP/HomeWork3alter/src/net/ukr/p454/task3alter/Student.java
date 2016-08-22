@@ -85,5 +85,12 @@ public class Student extends Human  {
 	public void setCourse(int course) {
 		this.course = course;
 	}
-
+	
+	public static class StudentId{
+		static int stdId = 10000;
+		
+		static int getstdId(){
+			return stdId ++;
+		}
+	}
 }
