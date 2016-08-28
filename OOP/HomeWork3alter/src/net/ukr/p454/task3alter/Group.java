@@ -120,7 +120,10 @@ public class Group {
 	
 	@Override
 	public String toString() {
-		sortArray();
+		//Arrays.sort(students,new SortByDateOfBirthday());
+		
+		Arrays.sort(students,new SortByDateOfBirthday());
+		
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Group Name:" + this.name);
 		stringBuilder.append(System.lineSeparator());

@@ -1,7 +1,8 @@
 package net.ukr.p454.task3alter;
 
 public enum Sex {
-	MALE("мужской"), FEMALE("женский");
+	
+	MALE("man"), FEMALE("woman");
 	
 	private String inRus;
 	

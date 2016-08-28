@@ -1,8 +1,7 @@
 package net.ukr.p454.task3alter;
 
-import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Formatter;
 
 public class Human {
@@ -10,11 +9,11 @@ public class Human {
 	private String fullName;
 	private int age;
 	private String nationality;
-	private Date dateOfBirthday;
+	private LocalDate dateOfBirthday;
 	private String placeOfBirthday;
 	private Sex sex;
 
-	public Human(String fullName, int age, String nationality, Date dateOfBirthday, String placeOfBirthday, Sex sex) {
+	public Human(String fullName, int age, String nationality, LocalDate dateOfBirthday, String placeOfBirthday, Sex sex) {
 		super();
 		this.fullName = fullName;
 		this.age = age;
@@ -40,17 +39,18 @@ public class Human {
 
 	@Override
 	public String toString() {
-		String str;
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MMMM.yyyy");
+		String str;	
 		
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");		
 		Formatter formatter = new Formatter();
+		
 		formatter.format("%-18s %s", "Fullname:", fullName);
 		formatter.format(System.lineSeparator());
 		formatter.format("%-18s %d", "Age:", age);
 		formatter.format(System.lineSeparator());
 		formatter.format("%-18s %s", "Nationality:", nationality);
 		formatter.format(System.lineSeparator());
-		formatter.format("%-18s %s", "Date of birthday:", simpleDateFormat.format(dateOfBirthday));
+		formatter.format("%-18s %s", "Date of birthday:", dateOfBirthday.format(dateFormat));
 		formatter.format(System.lineSeparator());
 		formatter.format("%-18s %s", "Place of birthday:", placeOfBirthday);
 		formatter.format(System.lineSeparator());
@@ -86,11 +86,11 @@ public class Human {
 		this.nationality = nationality;
 	}
 
-	public Date getDateOfBirthday() {
+	public LocalDate getDateOfBirthday() {
 		return dateOfBirthday;
 	}
 
-	public void setDateOfBirthday(Date dateOfBirthday) {
+	public void setDateOfBirthday(LocalDate dateOfBirthday) {
 		this.dateOfBirthday = dateOfBirthday;
 	}
 
