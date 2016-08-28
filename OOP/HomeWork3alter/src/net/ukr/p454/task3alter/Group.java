@@ -120,7 +120,6 @@ public class Group {
 	
 	@Override
 	public String toString() {
-		//Arrays.sort(students,new SortByDateOfBirthday());
 		
 		Arrays.sort(students,new SortByDateOfBirthday());
 		

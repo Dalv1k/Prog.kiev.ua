@@ -20,9 +20,9 @@ public class Main {
 		
 		Group group = new Group("DZ-33", curator);
 		
-		
-		group.addStudent(studentIAI);
 		group.addStudent(studentPAI);
+		group.addStudent(studentIAI);
+		
 		
 		System.out.println(group.toString());
 		
