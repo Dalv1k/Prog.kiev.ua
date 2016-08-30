@@ -3,26 +3,24 @@ package net.ukr.p454.task3alter;
 import java.util.Arrays;
 import java.util.Comparator;
 
-
-public class Group {
+public class Group implements Reservists {
 	private String name;
 	private Human groupCurator;
 	private Student[] students = new Student[1];
-	
+
 	public Group(String name, Human groupCurator) {
 		super();
 		this.name = name;
 		this.groupCurator = groupCurator;
 	}
 
-	
 	public Group() {
 		super();
 	}
 
 	public void addStudent(Student student) {
 		int position = checkVacancyPlace();
-		
+
 		if (checkStudentInGroup(student.getFullName()) != -1) {
 			System.out.println("Student " + student.getFullName() + " is in group " + this.name);
 			return;
@@ -47,7 +45,7 @@ public class Group {
 		}
 
 	}
-	
+
 	public void exludStudent(String fullname) {
 
 		int position = checkStudentInGroup(fullname);
@@ -68,7 +66,7 @@ public class Group {
 			System.out.println("Student " + fullname + " is not group " + this.name);
 		}
 	}
-	
+
 	private void increaseArray() throws GroupExeption {
 		if (students.length < 10) {
 			Student[] array = new Student[students.length + 1];
@@ -78,7 +76,7 @@ public class Group {
 			throw new GroupExeption();
 		}
 	}
-	
+
 	private int checkVacancyPlace() {
 		int position = -1;
 		for (int i = 0; i < students.length; i++) {
@@ -89,7 +87,7 @@ public class Group {
 		}
 		return position;
 	}
-	
+
 	private int checkStudentInGroup(String fullname) {
 		int exists = -1;
 		for (int i = 0; i < students.length; i++) {
@@ -99,30 +97,14 @@ public class Group {
 		}
 		return exists;
 	}
-	
-	private void sortArray() {
-		Arrays.sort(students, new Comparator<Student>() {
-			@Override
-			public int compare(Student studentOne, Student studentTwo) {
-				if (studentOne == null && studentTwo == null) {
-					return 0;
-				} else if (studentOne == null) {
-					return 1;
-				} else if (studentTwo == null) {
-					return -1;
-				}
-				String studentNameOne = studentOne.getFullName().toUpperCase();
-				String studentNameTwo = studentTwo.getFullName().toUpperCase();
-				return studentNameOne.compareTo(studentNameTwo);
-			}
-		});
+
+	public void sortGroup(SortField sortField) {
+		Arrays.sort(students,new SortStudent(sortField));
 	}
 	
 	@Override
 	public String toString() {
-		
-		Arrays.sort(students,new SortByDateOfBirthday());
-		
+
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("Group Name:" + this.name);
 		stringBuilder.append(System.lineSeparator());
@@ -141,7 +123,7 @@ public class Group {
 		}
 		return stringBuilder.toString();
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -156,7 +138,12 @@ public class Group {
 
 	public void setGroupCurator(Human groupCurator) {
 		this.groupCurator = groupCurator;
-	}	
+	}
+
+	public Student[] getStudents() {
+		return students;
+	}
 	
 	
+
 }

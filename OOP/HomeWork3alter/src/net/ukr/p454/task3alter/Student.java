@@ -3,7 +3,7 @@ package net.ukr.p454.task3alter;
 import java.time.LocalDate;
 import java.util.Formatter;
 
-public class Student extends Human  {
+public class Student extends Human{
 	public static int id = 10000;
 	
 	private String faculty;
@@ -55,7 +55,7 @@ public class Student extends Human  {
 		super();
 	}
 	
-	private final static int setId(){
+	public final static int setId(){
 		return id++;
 	}
 	
@@ -75,6 +75,19 @@ public class Student extends Human  {
 		this.group = group;
 	}
 
+	
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		Student.id = id;
+	}
+
+	public void setStudentID() {
+		this.studentID = Student.setId();
+	}
+
 	public int getStudentID() {
 		return studentID;
 	}
@@ -86,5 +99,9 @@ public class Student extends Human  {
 	public void setCourse(int course) {
 		this.course = course;
 	}
-		
+	
+	public static Student addStudent (IStudentAdd student){
+		return student.addStudent();
+	}
+	
 }
