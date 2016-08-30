@@ -1,9 +1,8 @@
 package net.ukr.p454.task3alter;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
-public class Group implements Reservists {
+public class Group implements IReservists {
 	private String name;
 	private Human groupCurator;
 	private Student[] students = new Student[1];

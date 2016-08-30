@@ -1,6 +1,6 @@
 package net.ukr.p454.task3alter;
 
-public interface Reservists {
+public interface IReservists {
 	
 	default Human[] getReservists(Human[] humans){
 		int position = 0;
